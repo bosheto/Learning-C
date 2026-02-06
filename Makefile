@@ -11,7 +11,7 @@ TARGET = main
 SRC_FILES = main.c 
 BUILD_DIR = build
 
-all: $(TARGET)
+all: clean $(TARGET)
 
 $(TARGET):$(TARGET).c
 	$(CC) $(CFLAGS) -o ${BUILD_DIR}/$(TARGET) $(SRC_FILES) 
