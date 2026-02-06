@@ -3,7 +3,12 @@
 #include <math.h>
 
 int main(void){
-    printf("Hello World \n");
-    printf("int size on system %ld\n", sizeof(int));
+    int x;
+    float pi;
+
+    scanf("%d%g", &x, &pi);
+
+    printf("x is %d | pi is %g\n", x, pi);
+
     return 0;
 } 
