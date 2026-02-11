@@ -16,13 +16,14 @@ int main(void){
 
     arr = malloc(sizeof(int) * 20);
     check_pointer((void*) arr);
+    
     for(int i=0; i < 20; i++){
         s_arr[i] = i;
         arr[i] = i;
     }
 
     printf("%d %d \n", s_arr[3], arr[3]);
-
+    cleanup_pointer((void**) &arr);
     return 0;
 } 
 
