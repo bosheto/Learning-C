@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define R 3
+#define C 6
 int change_value(int *input);
 
 void cleanup_pointer(void **p);
@@ -11,19 +13,30 @@ void check_pointer(void *p);
 
 int main(void){
 
-    int *arr;
-    int s_arr[20];
+    int **two_d_arr;
 
-    arr = malloc(sizeof(int) * 20);
-    check_pointer((void*) arr);
-    
-    for(int i=0; i < 20; i++){
-        s_arr[i] = i;
-        arr[i] = i;
+    two_d_arr = malloc(sizeof(int *) * R);
+    check_pointer((void *) two_d_arr);
+
+    for(int i = 0; i < R; i++){
+        two_d_arr[i] = malloc(sizeof(int) * C);
     }
 
-    printf("%d %d \n", s_arr[3], arr[3]);
-    cleanup_pointer((void**) &arr);
+    for(int r = 0; r < R; r++){
+        for(int c = 0; c < C; c++){
+            two_d_arr[r][c] = r * c;
+        }
+    }
+    
+    for(int r = 0; r < R; r++){
+        for(int c = 0; c < C; c++){
+            printf("%d ", two_d_arr[r][c]);
+        }
+        printf("\n");
+    }
+
+    cleanup_pointer((void**)&two_d_arr);
+
     return 0;
 } 
 
