@@ -2,40 +2,26 @@
 #include <stdio.h>
 #include <string.h>
 
-void print_array(int arr[], int size);
-
-void modify_array(int arr[], int size);
+int change_value(int *input);
 
 int main(void){
-    char str1[10];
-    char str2[10];
-    int len;
-
-    str1[0] = 'h';
-    str1[1] = 'i';
-    str1[2] = '\0';
     
-    len = strlen(str1);
+    int x = 101;
+    int y = change_value(&x);
 
-    printf("%s %d\n", str1, len);
-
-    strcpy(str2, str1);
-    printf("%s\n", str2);
-
-    strcpy(str2, "hello");
-    len = strlen(str2);
-
-    printf("%s %d\n", str2, len);
+    printf("x = %d | y = %d\n", x, y);
 
     return 0;
 } 
 
-void print_array(int arr[], int size){
-    for(int i = 0; i < size; i++){
-        printf("%d\n", arr[i]);
+int change_value(int *input){
+    int val;
+    val = *input;
+
+    if (val < 100){
+        *input = 100;
+    }else{
+        *input = val * 2;
     }
-}
-
-void modify_array(int arr[], int size){
-
+    return val;
 }

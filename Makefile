@@ -17,4 +17,4 @@ $(TARGET):$(TARGET).c
 	$(CC) $(CFLAGS) -o ${BUILD_DIR}/$(TARGET) $(SRC_FILES) 
 
 clean: 
-	$(RM) $(BUILD_DIR)/*
+	$(RM) -r $(BUILD_DIR)/*
