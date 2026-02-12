@@ -8,24 +8,40 @@ void cleanup_pointer(void **p);
 void check_pointer(void *p);
 
 int main(void){
-    int size;
-    char str[64];
-    char *new_str = NULL;
+    FILE *infile;
+    FILE *outfile;
 
-    strcpy(str, "Hello");
-    size = strlen(str);
+    char *ifile = "test.txt";
+    char *ofile = "output.txt";
 
-    new_str = malloc(sizeof(char) * (size+1));
-    check_pointer((void*) new_str);
+    infile = fopen(ifile, "r");
+    
+    if (infile == NULL){
+        printf("Error opening file %s\n", ifile);
+        exit(1);
+    }
 
-    strcpy(new_str, str);
+    outfile = fopen(ofile, "w");
 
-    printf("%s %s\n", str, new_str);
-    strcat(str, " There");
+    if (outfile == NULL){
+        printf("Error opening file %s\n", ofile);
+        exit(1);
+    }
 
-    printf("%s\n", str);
+    int ch;
+    while (1)
+    {
+        ch = getc(infile);
+        if(ch == EOF){
+            break;
+        }
+        putc(ch, outfile);
+    }
 
-    cleanup_pointer((void**)&new_str);
+    
+
+    fclose(infile);
+    fclose(outfile);
 
     return 0;
 } 
